@@ -6,6 +6,7 @@ const colors = require('tailwindcss/colors');
 // const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}"],
+  assets: ["./fonts/"],
   theme: {
     colors: {
       ...colors,
@@ -72,14 +73,7 @@ module.exports = {
         DEFAULT: '#FF7800'
       }
     },
-    fontFamily: {
-      sans: ['AvenirNext'],
-      mono: ['AvenirNext'],
-      comma: ['PT Sans'],
-      doctor: ['Bai Jamjuree'],
-      title: ['Poppins'],
-      userText: ['Spectral']
-    },
+    
     letterSpacing: {
       tight: '-1.5px',
       littlertightish: '-0.75px',
@@ -134,6 +128,15 @@ module.exports = {
       '2lg': '14px'
     },
     extend: {
+      fontFamily: {
+        'geo': 'Georama_400Regular',
+        sans: ['AvenirNext'],
+        mono: ['AvenirNext'],
+        comma: ['PT Sans'],
+        doctor: ['Bai Jamjuree'],
+        'title': 'Poppins_400Regular',
+        userText: ['Spectral']
+      },
       keyframes: {
         boomUp: {
           '0%, 100%': {
