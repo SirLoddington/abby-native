@@ -5,8 +5,10 @@
 const colors = require('tailwindcss/colors');
 // const plugin = require('tailwindcss/plugin');
 module.exports = {
+
+  //NEW FOLDERS NEED TO BE ADDED TO CONTENT
   content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}"],
-  assets: ["./fonts/"],
+  // assets: ["./fonts/"],
   theme: {
     colors: {
       ...colors,
@@ -134,7 +136,7 @@ module.exports = {
         mono: ['AvenirNext'],
         comma: ['PT Sans'],
         doctor: ['Bai Jamjuree'],
-        'title': 'Poppins_400Regular',
+        'title': ['Poppins_400Regular'],
         userText: ['Spectral']
       },
       keyframes: {
