@@ -1,13 +1,13 @@
-import MissionControl from './screens/MissionControl';
+import MissionControl from './application/screens/MissionControl';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { RootStackParamList } from './NavigationTypes';
 
-import Profile from './screens/Profile';
-import Lifestyle from './screens/Profile/Lifestyle';
-import MedicalHistory from './screens/Profile/MedicalHistory';
-import MedicalTeam from './screens/Profile/MedicalTeam';
-import Personal from './screens/Profile/Personal';
+import Profile from './application/screens/Profile';
+import Lifestyle from './application/screens/Profile/Lifestyle';
+import MedicalHistory from './application/screens/Profile/MedicalHistory';
+import MedicalTeam from './application/screens/Profile/MedicalTeam';
+import Personal from './application/screens/Profile/Personal';
 import { NavigationContainer } from '@react-navigation/native';
 
 export default function RootStack() {

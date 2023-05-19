@@ -14,7 +14,7 @@ import { useQuery } from 'react-query';
 //   StackScreenProps<RootStackParamList>
 // >;
 
-import { getFeed } from '../../services';
+import { getFeed } from '../../../services';
 
 // : Props
 export default function Journal({ route, navigation }) {

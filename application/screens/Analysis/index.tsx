@@ -13,7 +13,7 @@ import { Button, View, Text } from 'react-native';
 import type {
   RootStackParamList,
   BottomTabsParamList
-} from '../../NavigationTypes';
+} from '../../../NavigationTypes';
 import type { CompositeScreenProps } from '@react-navigation/native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { StackScreenProps } from '@react-navigation/stack';
@@ -22,7 +22,7 @@ type Props = CompositeScreenProps<
   StackScreenProps<RootStackParamList>
 >;
 
-import { AbbyLogo } from '../../components/AbbyLogo';
+import { AbbyLogo } from '../../common/AbbyLogo';
 
 export default function Analysis({ route, navigation }: Props) {
   const jid = route.params?.jid;

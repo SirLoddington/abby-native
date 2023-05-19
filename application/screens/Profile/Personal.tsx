@@ -1,6 +1,6 @@
 import { ImageBackground, Button, View, Text } from 'react-native';
 
-import { RootStackParamList } from '../../NavigationTypes';
+import { RootStackParamList } from '../../../NavigationTypes';
 import { StackScreenProps } from '@react-navigation/stack';
 type Props = StackScreenProps<RootStackParamList, 'Personal'>;
 

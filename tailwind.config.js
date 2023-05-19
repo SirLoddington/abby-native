@@ -4,11 +4,7 @@ const colors = require('tailwindcss/colors');
 // const plugin = require('tailwindcss/plugin');
 module.exports = {
   //NEW FOLDERS NEED TO BE ADDED TO CONTENT
-  content: [
-    './App.{js,jsx,ts,tsx}',
-    './screens/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}'
-  ],
+  content: ['./App.{js,jsx,ts,tsx}', './application/**/*.{js,jsx,ts,tsx}'],
   // assets: ["./fonts/"],
   theme: {
     colors: {

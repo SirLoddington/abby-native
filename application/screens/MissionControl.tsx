@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { BottomTabsParamList } from '../NavigationTypes';
+import type { BottomTabsParamList } from '../../NavigationTypes';
 
 import { View, Text } from 'react-native';
 
@@ -13,7 +13,7 @@ import Journal from './Journal';
 import Analysis from './Analysis';
 import Profile from './Profile';
 
-import Header from '../components/Header';
+import Header from '../common/Header';
 
 export default function MissionControl() {
   const BottomTabs = createBottomTabNavigator<BottomTabsParamList>();

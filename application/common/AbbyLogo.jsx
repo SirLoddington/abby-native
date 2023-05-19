@@ -30,8 +30,8 @@ export function AbbyLogo({
   leftMargin = true,
   staticImage = false
 }) {
-  const logo = require('../assets/transparent200x200.gif');
-  const staticLogo = require('../assets/transparent100x100.png');
+  const logo = require('../../assets/transparent200x200.gif');
+  const staticLogo = require('../../assets/transparent100x100.png');
 
   return (
     <View className={`shrink-0 flex flex-row items-center ${className}`}>
