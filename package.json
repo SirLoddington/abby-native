@@ -19,12 +19,15 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@react-navigation/stack": "^6.3.16",
     "@react-navigation/tabs": "^0.0.0-alpha.12",
+    "axios": "^1.4.0",
     "expo": "~48.0.9",
     "expo-font": "~11.1.1",
     "expo-splash-screen": "^0.18.1",
     "expo-status-bar": "~1.4.4",
+    "luxon": "^3.3.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
+    "react-live-clock": "^6.1.13",
     "react-native": "0.71.4",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-heroicons": "^3.2.0",
@@ -33,6 +36,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-svg": "^13.9.0",
     "react-navigation": "^4.4.4",
+    "react-query": "^3.39.3",
     "tailwindcss": "^3.3.1"
   },
   "devDependencies": {

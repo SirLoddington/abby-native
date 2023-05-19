@@ -1,12 +1,11 @@
 /// <reference types="nativewind/types" />
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StatusBar } from 'expo-status-bar';
+
 import { Text, SafeAreaView, View } from 'react-native';
 import React, { useCallback } from 'react';
 
-import MissionControl from './screens/MissionControl';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import * as SplashScreen from 'expo-splash-screen';
 // import { Georama_400Regular } from '@expo-google-fonts/georama';
@@ -72,33 +71,22 @@ export default function App() {
     return null;
   }
 
-  function HomeScreen() {
-    return (
-      <View className="flex-1 items-center justify-center">
-        <Text>Home!</Text>
-      </View>
-    );
-  }
-
-  function SettingsScreen() {
-    return (
-      <View className="flex-1 items-center justify-center">
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-  const Tab = createBottomTabNavigator();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity
+      }
+    }
+  });
 
   return (
     // <SafeAreaView onLayout={()=>{}}>
-    <View className={' flex-1 '} onLayout={onLayoutRootView}>
-      {/* <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer> */}
-      <RootStack />
-    </View>
+
+    <QueryClientProvider client={queryClient}>
+      {/* Unauthenticated Router*/}
+      <View className={' flex-1 '} onLayout={onLayoutRootView}>
+        <RootStack />
+      </View>
+    </QueryClientProvider>
   );
 }

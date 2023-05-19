@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 
-
-
 const colors = require('tailwindcss/colors');
 // const plugin = require('tailwindcss/plugin');
 module.exports = {
-
   //NEW FOLDERS NEED TO BE ADDED TO CONTENT
-  content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    './App.{js,jsx,ts,tsx}',
+    './screens/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}'
+  ],
   // assets: ["./fonts/"],
   theme: {
     colors: {
@@ -75,7 +76,7 @@ module.exports = {
         DEFAULT: '#FF7800'
       }
     },
-    
+
     letterSpacing: {
       tight: '-1.5px',
       littlertightish: '-0.75px',
@@ -99,10 +100,10 @@ module.exports = {
       mid: '22px', // 1.375 * 16px
       '2xl': '24px', // 1.5 * 16px
       '3xl': '30px', // 1.875 * 16px
-      '3.5xl': '35.2px',// 2.2 * 16px
+      '3.5xl': '35.2px', // 2.2 * 16px
       '4xl': '44.8px', // 2.8 * 16px
       '5xl': '48px', // 3 * 16px
-      '5.25xl': '56px',// given as pixel value
+      '5.25xl': '56px', // given as pixel value
       '5.5xl': '60px', // given as pixel value
       '6xl': '64px', // 4 * 16px
       '7xl': '80px', // 5 * 16px
@@ -113,7 +114,7 @@ module.exports = {
       '12xl': '192px', // 12 * 16px
       '13xl': '208px', // 13 * 16px
       '14xl': '224px' // 14 * 16px
-      },
+    },
     borderRadius: {
       none: '0',
       sm: '0.125rem',
@@ -131,12 +132,12 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'geo': 'Georama_400Regular',
+        geo: 'Georama_400Regular',
         sans: ['AvenirNext'],
         mono: ['AvenirNext'],
         comma: ['PT Sans'],
         doctor: ['Bai Jamjuree'],
-        'title': ['Poppins_400Regular'],
+        title: ['Poppins_400Regular'],
         userText: ['Spectral']
       },
       keyframes: {
@@ -325,6 +326,5 @@ module.exports = {
       }
     }
   },
-  plugins: [],
-}
-
+  plugins: []
+};

@@ -22,12 +22,15 @@ type Props = CompositeScreenProps<
   StackScreenProps<RootStackParamList>
 >;
 
+import { AbbyLogo } from '../../components/AbbyLogo';
+
 export default function Analysis({ route, navigation }: Props) {
   const jid = route.params?.jid;
   return (
-    <View>
+    <View className="bg-white flex-1 justify-center items-center">
       <Text>This is the Journal analysis page for journal {jid}</Text>
       <Button onPress={() => navigation.goBack()} title="Go back home" />
+      <AbbyLogo />
     </View>
   );
 }

@@ -7,11 +7,9 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type BottomTabsParamList = {
-  Homepage: undefined;
-  Profile: undefined;
-  Feed: undefined;
-  Create: undefined;
+  Journal: undefined;
   Analysis: { jid: string } | undefined;
+  Profile: undefined;
 };
 
 export type RootStackParamList = {

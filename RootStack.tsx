@@ -17,9 +17,11 @@ export default function RootStack() {
       <Stack.Navigator
         id="RootStack"
         initialRouteName="MissionControl"
-        screenOptions={{
-          headerShown: false
-        }}>
+        screenOptions={
+          {
+            // headerShown: false
+          }
+        }>
         <Stack.Screen name="MissionControl" component={MissionControl} />
         {/* <Stack.Screen name="Profile" component={Profile} /> */}
         <Stack.Screen name="Lifestyle" component={Lifestyle} />
