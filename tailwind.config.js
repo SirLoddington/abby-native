@@ -112,18 +112,18 @@ module.exports = {
       '14xl': '224px' // 14 * 16px
     },
     borderRadius: {
-      none: '0',
-      sm: '0.125rem',
-      DEFAULT: '0.25rem',
-      md: '0.375rem',
-      lg: '0.5rem',
+      none: '0', //'0' x16px
+      sm: '2px', //'0.125rem' x16px
+      DEFAULT: '4px', //'0.25rem' x16px
+      md: '6px', //'0.375rem' x16px
+      lg: '8px', //'0.5rem' x16px
       xl: '40px',
-      '2xl': '1.875rem',
+      '2xl': '30px', // '1.875rem' x16px
       full: '9999px',
-      large: '2rem',
-      mid: '1.25rem',
+      large: '32px', //'2rem' x16px
+      mid: '20px', //'1.25rem' x16px
       charlie: '20px',
-      base: '0.875rem',
+      base: '14px', //'0.875rem' x16px
       '2lg': '14px'
     },
     extend: {

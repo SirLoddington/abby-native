@@ -19,4 +19,6 @@ export type RootStackParamList = {
   MedicalTeam: undefined;
   MedicalHistory: undefined;
   Lifestyle: undefined;
+  Journalling: undefined;
+  JournalPage: undefined;
 };

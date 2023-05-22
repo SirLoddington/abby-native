@@ -30,7 +30,9 @@ import {
   Poppins_900Black,
   Poppins_900Black_Italic
 } from '@expo-google-fonts/poppins';
-import RootStack from './RootStack';
+// import { Avinir_400Regular } from '@expo-google-fonts/avinir';
+
+import RootStack from './application/RootStack';
 
 /* Prevent splash screen from hiding automatically */
 

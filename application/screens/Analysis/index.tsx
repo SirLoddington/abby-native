@@ -23,6 +23,7 @@ type Props = CompositeScreenProps<
 >;
 
 import { AbbyLogo } from '../../common/AbbyLogo';
+import AbbyButton from '../../common/AbbyButton';
 
 export default function Analysis({ route, navigation }: Props) {
   const jid = route.params?.jid;
@@ -31,6 +32,11 @@ export default function Analysis({ route, navigation }: Props) {
       <Text>This is the Journal analysis page for journal {jid}</Text>
       <Button onPress={() => navigation.goBack()} title="Go back home" />
       <AbbyLogo />
+      <AbbyButton
+        text="Click if you have small nuts"
+        colour="white"
+        shapeStyle="box"
+      />
     </View>
   );
 }
