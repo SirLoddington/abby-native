@@ -2,11 +2,12 @@ import React from 'react';
 import { Pressable, View, Text } from 'react-native';
 
 export default function AbbyButton({
-  onPress = () => {},
+  pressFunction = () => {},
   colour = 'blue',
   shapeStyle = 'rounded',
   size = 'medium',
-  text = 'Submit'
+  text = 'Submit',
+  className = ''
 }) {
   const colourMap = {
     white: {
@@ -38,16 +39,18 @@ export default function AbbyButton({
   };
 
   return (
-    <Pressable>
+    <Pressable onPress={() => pressFunction()}>
       {({ pressed }) => (
         <View
-          className={`${shapeMap[shapeStyle]} ${
+          className={`w-fit flex justify-center items-center
+          ${shapeMap[shapeStyle]} ${
             pressed
               ? colourMap[colour].secondary.container
               : colourMap[colour].primary.container
-          } `}>
+          } 
+          ${className}`}>
           <Text
-            className={` px-4 py-2 font-title ${
+            className={`w-50 px-4 py-2 font-title ${
               pressed
                 ? colourMap[colour].secondary.text
                 : colourMap[colour].primary.text

@@ -25,17 +25,83 @@ type Props = CompositeScreenProps<
 import { AbbyLogo } from '../../common/AbbyLogo';
 import AbbyButton from '../../common/AbbyButton';
 
+import { useState } from 'react';
+import BottomModal from '../../modals/modalStyles/Bottom';
+import CardModal from '../../modals/modalStyles/Card';
+import BottomScrollModal from '../../modals/modalStyles/BottomScroll';
+
 export default function Analysis({ route, navigation }: Props) {
   const jid = route.params?.jid;
+
+  const [cardIsOpen, setCardIsOpen] = useState(false);
+  const [sliderIsOpen, setSliderIsOpen] = useState(false);
+  const [bottomScrollModalIsOpen, setBottomScrollModalIsOpen] = useState(false);
+
   return (
     <View className="bg-white flex-1 justify-center items-center">
+      <CardModal isOpen={cardIsOpen} setIsOpen={setCardIsOpen}>
+        <View className="flex-1 flex flex-col space-y-10 mt-10">
+          <Text>Card!</Text>
+          <AbbyButton
+            pressFunction={() => setCardIsOpen(false)}
+            text="Hide modal"
+            colour="white"
+            className="self-end"
+          />
+        </View>
+      </CardModal>
+      <BottomModal isOpen={sliderIsOpen} setIsOpen={setSliderIsOpen}>
+        <View className="flex-1 flex flex-col space-y-4">
+          <Text className="text-xl font-title text-center">Slider!</Text>
+          <AbbyButton
+            pressFunction={() => setSliderIsOpen(false)}
+            text="Hide modal"
+            colour="white"
+            className="self-end"
+          />
+        </View>
+      </BottomModal>
+      <BottomScrollModal
+        isOpen={bottomScrollModalIsOpen}
+        setIsOpen={setBottomScrollModalIsOpen}>
+        <View
+          // style={{ height: 400, backgroundColor: '#FFFFFF' }}
+          className="flex-1 bg-blue h-[500px]">
+          <Text className="text-xl font-title text-center">Scroller!</Text>
+          <AbbyButton
+            pressFunction={() => setBottomScrollModalIsOpen(false)}
+            text="Hide modal"
+            colour="white"
+            className="self-end"
+          />
+        </View>
+      </BottomScrollModal>
       <Text>This is the Journal analysis page for journal {jid}</Text>
       <Button onPress={() => navigation.goBack()} title="Go back home" />
       <AbbyLogo />
       <AbbyButton
-        text="Click if you have small nuts"
+        text="Slider modal"
         colour="white"
         shapeStyle="box"
+        pressFunction={() => {
+          setSliderIsOpen(true);
+        }}
+      />
+      <AbbyButton
+        text="Card modal"
+        colour="white"
+        shapeStyle="box"
+        pressFunction={() => {
+          setCardIsOpen(true);
+        }}
+      />
+      <AbbyButton
+        text="Bottom scroll modal"
+        colour="white"
+        shapeStyle="box"
+        pressFunction={() => {
+          setBottomScrollModalIsOpen(true);
+        }}
       />
     </View>
   );
