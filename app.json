@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "jsc",
     "name": "abby-native",
     "slug": "abby-native",
     "version": "1.0.0",
