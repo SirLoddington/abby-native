@@ -63,17 +63,24 @@ export default function Analysis({ route, navigation }: Props) {
       </BottomModal>
       <BottomScrollModal
         isOpen={bottomScrollModalIsOpen}
-        setIsOpen={setBottomScrollModalIsOpen}>
-        <View
-          // style={{ height: 400, backgroundColor: '#FFFFFF' }}
-          className="flex-1 bg-blue h-[500px]">
-          <Text className="text-xl font-title text-center">Scroller!</Text>
-          <AbbyButton
-            pressFunction={() => setBottomScrollModalIsOpen(false)}
-            text="Hide modal"
-            colour="white"
-            className="self-end"
-          />
+        setIsOpen={setBottomScrollModalIsOpen}
+        classStyle="bg-blue ">
+        <View>
+          <View className="  h-[200px]">
+            <Text className="text-xl font-title text-center">Scroller!</Text>
+            <AbbyButton
+              pressFunction={() => setBottomScrollModalIsOpen(false)}
+              text="Hide modal"
+              colour="white"
+              className="self-end"
+            />
+          </View>
+          <View className=" h-[200px]">
+            <Text className="text-xl font-title text-center">im cruisin</Text>
+          </View>
+          <View className=" h-[200px]">
+            <Text className="text-xl font-title text-center">Skrrrrr</Text>
+          </View>
         </View>
       </BottomScrollModal>
       <Text>This is the Journal analysis page for journal {jid}</Text>

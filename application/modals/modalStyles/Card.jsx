@@ -22,7 +22,7 @@ export default function CardModal({
       onBackdropPress={() => setIsOpen(false)}
       {...props}>
       <View
-        className={`rounded-xl h-full flex ${colourMap[colour]?.containerStyle}`}>
+        className={`rounded-xl h-full p-4 flex ${colourMap[colour]?.containerStyle}`}>
         {children}
       </View>
     </Modal>

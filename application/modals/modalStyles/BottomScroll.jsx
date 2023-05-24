@@ -7,8 +7,12 @@ export default function BottomScroll({
   isOpen,
   setIsOpen,
   children = <></>,
+  classStyle = '',
   ...props
 }) {
+  //bg-white if there are no other bg classes
+  const bgWhite = !classStyle.includes('bg');
+
   const scrollViewRef = useRef(null);
   const [scrollOffset, setScrollOffset] = useState(null);
 
@@ -31,49 +35,20 @@ export default function BottomScroll({
       swipeDirection={['down']}
       scrollTo={handleScrollTo}
       scrollOffset={scrollOffset}
-      scrollOffsetMax={400 - 300} // content height - ScrollView height
+      scrollOffsetMax={1000}
       propagateSwipe={true}
-      style={styles.modal}>
-      <View style={styles.scrollableModal}>
+      className="flex justify-end m-0">
+      <View className="h-[40%]">
         <ScrollView
           ref={scrollViewRef}
           onScroll={handleOnScroll}
-          scrollEventThrottle={16}>
-          <View style={styles.scrollableModalContent2}>{children}</View>
+          scrollEventThrottle={16}
+          overScrollMode="always"
+          //Use a colourmap?
+          className={`${bgWhite && 'bg-white'} p-4 ${classStyle}`}>
+          {children}
         </ScrollView>
       </View>
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  modal: {
-    justifyContent: 'flex-end',
-    margin: 0
-  },
-  scrollableModal: {
-    height: 500
-  },
-  scrollableModalContent1: {
-    height: 800,
-    // backgroundColor: '#87BBE0',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  scrollableModalText1: {
-    fontSize: 20,
-    color: 'white'
-  },
-  scrollableModalContent2: {
-    //height should be minimum possible
-    height: 800,
-    // maxHeight: 500,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  scrollableModalText2: {
-    fontSize: 20,
-    color: 'black'
-  }
-});

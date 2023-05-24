@@ -8,21 +8,15 @@ export default function BottomModal({
   children = <></>,
   ...props
 }) {
-  //   const [isModalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <Modal
       isVisible={isOpen}
       onBackdropPress={() => setIsOpen(false)}
       onSwipeComplete={() => setIsOpen(false)}
       swipeDirection={['up', 'down']}
-      style={{ justifyContent: 'flex-end', margin: 0 }}
+      className="flex justify-end m-0"
       {...props}>
-      <View className="bg-white h-1/2 flex ">{children}</View>
+      <View className="bg-white h-1/2 flex p-4">{children}</View>
     </Modal>
   );
 }
