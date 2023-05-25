@@ -1,7 +1,7 @@
 {
   "expo": {
     "jsEngine": "jsc",
-    "name": "abby-native",
+    "name": "Abby Health",
     "slug": "abby-native",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,9 +14,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.AbbyHealth.Abby",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.AbbyHealth.Abby",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
