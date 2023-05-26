@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import * as SplashScreen from 'expo-splash-screen';
 // import { Georama_400Regular } from '@expo-google-fonts/georama';
 
-import loadFonts from './loadFonts';
+import loadFonts from './assets/fonts/loadFonts';
 
 import RootStack from './application/RootStack';
 
