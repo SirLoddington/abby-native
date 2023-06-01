@@ -27,7 +27,7 @@ import AbbyButton from '../../common/AbbyButton';
 
 import { useState } from 'react';
 import BottomModal from '../../modals/modalStyles/Bottom';
-import CardModal from '../../modals/modalStyles/Card';
+import Card from '../../modals/modalStyles/Card';
 import BottomScrollModal from '../../modals/modalStyles/BottomScroll';
 
 export default function Analysis({ route, navigation }: Props) {
@@ -39,7 +39,7 @@ export default function Analysis({ route, navigation }: Props) {
 
   return (
     <View className="bg-white flex-1 justify-center items-center">
-      <CardModal isOpen={cardIsOpen} setIsOpen={setCardIsOpen}>
+      <Card isOpen={cardIsOpen} setIsOpen={setCardIsOpen}>
         <View className="flex-1 flex flex-col space-y-10 mt-10">
           <Text>Card!</Text>
           <AbbyButton
@@ -49,7 +49,7 @@ export default function Analysis({ route, navigation }: Props) {
             className="self-end"
           />
         </View>
-      </CardModal>
+      </Card>
       <BottomModal isOpen={sliderIsOpen} setIsOpen={setSliderIsOpen}>
         <View className="flex-1 flex flex-col space-y-4">
           <Text className="text-xl font-title text-center">Slider!</Text>

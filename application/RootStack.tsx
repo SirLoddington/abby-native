@@ -10,8 +10,9 @@ import MedicalTeam from './screens/Profile/MedicalTeam';
 import Personal from './screens/Profile/Personal';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Header from './common/Header';
-import Journalling from './screens/Journal/Journalling';
+import Header from './Headers/Header';
+import HeaderLeft from './Headers/HeaderLeft';
+import Journalling from './screens/Journal/Create';
 import JournalPage from './screens/Journal/JournalPage';
 
 export default function RootStack() {
@@ -36,7 +37,13 @@ export default function RootStack() {
           name="MissionControl"
           component={MissionControl}
           options={{
-            headerTitle: (props) => <Header {...props} name="Missionary" />
+            headerShown: false
+            // headerTitle: (props) => (
+            //   <Header {...props} title="Bission" name="nuts" />
+            // ),
+            // headerLeft: (props) => (
+            //   <HeaderLeft name="ass" date="upmyAss" {...props} />
+            // )
           }}
         />
         {/* <Stack.Screen name="Profile" component={Profile} /> */}

@@ -19,10 +19,27 @@ import {
   Poppins_900Black,
   Poppins_900Black_Italic
 } from '@expo-google-fonts/poppins';
-// import { Avinir_400Regular } from '@expo-google-fonts/avinir';
+
+import {
+  Spectral_200ExtraLight,
+  Spectral_200ExtraLight_Italic,
+  Spectral_300Light,
+  Spectral_300Light_Italic,
+  Spectral_400Regular,
+  Spectral_400Regular_Italic,
+  Spectral_500Medium,
+  Spectral_500Medium_Italic,
+  Spectral_600SemiBold,
+  Spectral_600SemiBold_Italic,
+  Spectral_700Bold,
+  Spectral_700Bold_Italic,
+  Spectral_800ExtraBold,
+  Spectral_800ExtraBold_Italic
+} from '@expo-google-fonts/spectral';
 
 export default function loadFonts() {
   const [fontsLoaded] = useFonts({
+    AvenirNext: require('./AvenirNext-Regular-08.ttf'),
     Poppins_100Thin,
     Poppins_100Thin_Italic,
     Poppins_200ExtraLight,
@@ -40,7 +57,22 @@ export default function loadFonts() {
     Poppins_800ExtraBold,
     Poppins_800ExtraBold_Italic,
     Poppins_900Black,
-    Poppins_900Black_Italic
+    Poppins_900Black_Italic,
+
+    Spectral_200ExtraLight,
+    Spectral_200ExtraLight_Italic,
+    Spectral_300Light,
+    Spectral_300Light_Italic,
+    Spectral_400Regular,
+    Spectral_400Regular_Italic,
+    Spectral_500Medium,
+    Spectral_500Medium_Italic,
+    Spectral_600SemiBold,
+    Spectral_600SemiBold_Italic,
+    Spectral_700Bold,
+    Spectral_700Bold_Italic,
+    Spectral_800ExtraBold,
+    Spectral_800ExtraBold_Italic
   });
   return fontsLoaded;
 }

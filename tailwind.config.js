@@ -134,7 +134,7 @@ module.exports = {
         comma: ['PT Sans'],
         doctor: ['Bai Jamjuree'],
         title: ['Poppins_400Regular'],
-        userText: ['Spectral']
+        userText: ['Spectral_400Regular']
       },
       keyframes: {
         boomUp: {

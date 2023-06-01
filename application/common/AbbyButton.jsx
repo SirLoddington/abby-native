@@ -39,10 +39,10 @@ export default function AbbyButton({
   };
 
   return (
-    <Pressable onPress={() => pressFunction()}>
+    <Pressable onPress={() => pressFunction()} className="items-center">
       {({ pressed }) => (
         <View
-          className={`w-fit flex justify-center items-center
+          className={` justify-center items-center
           ${shapeMap[shapeStyle]} ${
             pressed
               ? colourMap[colour].secondary.container
@@ -50,7 +50,7 @@ export default function AbbyButton({
           } 
           ${className}`}>
           <Text
-            className={`w-50 px-4 py-2 font-title ${
+            className={` px-4 py-2 font-title ${
               pressed
                 ? colourMap[colour].secondary.text
                 : colourMap[colour].primary.text
