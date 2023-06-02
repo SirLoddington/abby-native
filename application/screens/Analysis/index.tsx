@@ -30,6 +30,9 @@ import BottomModal from '../../modals/modalStyles/Bottom';
 import Card from '../../modals/modalStyles/Card';
 import BottomScrollModal from '../../modals/modalStyles/BottomScroll';
 
+import AbbyMonthPicker from '../../common/AbbyMonthPicker';
+import AbbyCollapsible from '../../common/AbbyCollapsible';
+
 export default function Analysis({ route, navigation }: Props) {
   const jid = route.params?.jid;
 
@@ -37,8 +40,38 @@ export default function Analysis({ route, navigation }: Props) {
   const [sliderIsOpen, setSliderIsOpen] = useState(false);
   const [bottomScrollModalIsOpen, setBottomScrollModalIsOpen] = useState(false);
 
+  const [dateRange, setDateRange] = useState({
+    from: null,
+    to: null
+  });
+
   return (
     <View className="bg-white flex-1 justify-center items-center">
+      <View className="absolute top-0 w-full">
+        <AbbyMonthPicker dateRange={dateRange} setDateRange={setDateRange} />
+        <Text className="text-center font-title">
+          Ready to collect data between
+          {dateRange?.from?.toISOString()} - {dateRange?.to?.toISOString()}
+        </Text>
+      </View>
+
+      <AbbyCollapsible title="Click to FUCK" open={true}>
+        <Text>{'O || O'}</Text>
+        <Text>{'    ||  '}</Text>
+        <Text>{'    ||  '}</Text>
+        <Text>{'    ||  '}</Text>
+        <Text>{'    ||  '}</Text>
+        <Text>{'    ||  '}</Text>
+        <Text>{'   V  '}</Text>
+      </AbbyCollapsible>
+      <AbbyCollapsible title="Click to CUM" open={true}>
+        <Text>{'    ^.  '}</Text>
+        <Text>{'   .~\\  '}</Text>
+        <Text>{'  o~~\\ '}</Text>
+        <Text>{' /o~\\~o '}</Text>
+        <Text>{'~~~~~~ '}</Text>
+      </AbbyCollapsible>
+
       <Card isOpen={cardIsOpen} setIsOpen={setCardIsOpen}>
         <View className="flex-1 flex flex-col space-y-10 mt-10">
           <Text>Card!</Text>
