@@ -35,7 +35,13 @@ export default function AbbyButton({
   const shapeMap = {
     rounded: 'rounded-full border-2',
     box: 'border-2 rounded-lg',
-    textOnly: {}
+    text: 'border-0 '
+  };
+
+  const sizeMap = {
+    small: 'px-2 py-1 text-lg',
+    medium: 'px-4 py-2 text-xl',
+    large: 'px-6 py-3 text-2xl'
   };
 
   return (
@@ -50,7 +56,9 @@ export default function AbbyButton({
           } 
           ${className}`}>
           <Text
-            className={` px-4 py-2 font-title ${
+            className={` px-4 py-2 font-title
+            ${sizeMap[size]}
+            ${
               pressed
                 ? colourMap[colour].secondary.text
                 : colourMap[colour].primary.text

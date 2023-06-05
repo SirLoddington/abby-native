@@ -8,11 +8,10 @@ import AbbyButton from '../../../common/AbbyButton';
 import useCreateJournal from '../../../../hooks/useCreateJournal';
 
 import ConfirmationCard from './ConfirmationCard';
+import LiveClock from '../../../common/LiveClock';
 
 export default function Create({ route, navigation }) {
-  const [text, onChangeText] = useState(
-    'Try journalling about how ur nuts smell'
-  );
+  const [text, onChangeText] = useState('');
 
   const [journalID, setJournalId] = useState(null);
 
@@ -33,16 +32,31 @@ export default function Create({ route, navigation }) {
         isOpen={showConfirmation}
         setIsOpen={setShowConfirmation}
       />
-      <View className=" bg-white flex-1 ">
-        <Text>New journal entry</Text>
+      <View className=" bg-white flex-1 flex flex-col  ">
+        <LiveClock classStyle="text-2xl" date />
         <TextEditor text={text} onChangeText={onChangeText} />
-        <AbbyButton
-          text="Anal-yse"
-          shapeStyle="box"
-          pressFunction={() => {
-            handleOnSubmit();
-          }}
-        />
+        <View className="flex-1 self-end absolute bottom-10 right-10">
+          <View className="flex-1 flex-row space-x-2 justify-between ">
+            <AbbyButton
+              text="Exit"
+              shapeStyle="rounded"
+              colour="white"
+              pressFunction={() => {
+                navigation.goBack();
+              }}
+            />
+            {text && (
+              <AbbyButton
+                text="Save"
+                shapeStyle="rounded"
+                colour="white"
+                pressFunction={() => {
+                  handleOnSubmit();
+                }}
+              />
+            )}
+          </View>
+        </View>
       </View>
     </>
   );

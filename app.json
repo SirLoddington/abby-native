@@ -9,12 +9,9 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/transparent200x200.gif",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0065ff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.AbbyHealth.Abby",

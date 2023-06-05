@@ -16,6 +16,8 @@ import JournalEntryMini from './JournalEntryMini';
 import JournalPrompt from './JournalPrompt';
 import DateHeader from '../../../Headers/DateHeader';
 
+import FeedDateHeader from './FeedDateHeader';
+
 import { useNavigation } from '@react-navigation/native';
 
 export default function JournalHistory() {
@@ -24,6 +26,20 @@ export default function JournalHistory() {
     { type: 'journalHere' },
     { type: 'journalPrompt' }
   ]);
+
+  // const [feedDateHeaderIndexes, setFeedDateHeaderIndexes] = useState([]);
+  // var feedDateHeaderIndexes = useRef([4]);
+
+  // useEffect(() => {
+  //   const indexes = feedData
+  //     .map((item, index) => {
+  //       if (item.type === 'feedDateHeader') {
+  //         return index;
+  //       }
+  //     })
+  //     .filter((item) => item !== undefined);
+  //   setFeedDateHeaderIndexes(indexes);
+  // }, [feedData]);
 
   const [to, setTo] = useState(null);
   const [from, setFrom] = useState(null);
@@ -44,6 +60,14 @@ export default function JournalHistory() {
 
   useEffect(() => {
     if (data) {
+      // const dateHeader = {
+      //   type: 'feedDateHeader',
+      //   from: new Date(from),
+      //   to: new Date(to)
+      // };
+      // setFeedDateHeaderIndexes((curr) => [...curr, feedData.length]);
+      // feedDateHeaderIndexes.current.push(feedData.length);
+
       const journalEntries = data?.data?.map((entry) => {
         return {
           type: 'journalEntry',
@@ -53,6 +77,7 @@ export default function JournalHistory() {
       // const journals = events?.filter((event) => {
       //   return event.type === 'journalEntry';
       // });
+
       setFeedData((curr) => [...curr, ...journalEntries]);
     }
   }, [data]);
@@ -75,8 +100,6 @@ export default function JournalHistory() {
       twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 7);
       setFrom(twoWeeksAgo.toISOString());
       //wait 5 seconds for the data to load
-      console.log('init to', to);
-      console.log('init from', from);
 
       // setTimeout(() => {}, 5000);
     } else {
@@ -113,6 +136,9 @@ export default function JournalHistory() {
       case 'journalEntry':
         return <JournalEntryMini journal={item.journal} />;
 
+      case 'feedDateHeader':
+        return <FeedDateHeader from={item.from} to={item.to} />;
+
       default:
         return null;
     }
@@ -122,12 +148,15 @@ export default function JournalHistory() {
     <FlatList
       className="flex-1 bg-white px-6"
       data={feedData}
-      renderItem={({ item, index }) => renderItem(item)}
+      renderItem={({ item, index }) => {
+        return renderItem(item);
+      }}
       onEndReached={() => {
         console.log('onEndReached');
         getNextWeek();
       }}
       decelerationRate={'fast'}
+      // stickyHeaderIndices={feedDateHeaderIndexes.current}
     />
   );
 }

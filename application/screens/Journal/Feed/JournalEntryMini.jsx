@@ -14,7 +14,7 @@ export default function JournalEntry({ journal }) {
           journalID: journal?.id
         });
       }}>
-      <View className="flex flex-col space-y-2 border-b border-black border-opacity-10 pb-4 my-8">
+      <View className="bg-white flex flex-col space-y-2 border-b border-black border-opacity-10 pb-4 my-8">
         <Text className="font-userText">
           {createdDate?.toFormat('cccc, dd LLL h:mm a')}
         </Text>

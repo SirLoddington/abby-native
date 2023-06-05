@@ -7,10 +7,11 @@ import { PlusIcon, MinusIcon } from 'react-native-heroicons/solid';
 import { Pressable, View, Text } from 'react-native';
 
 export default function AbbyCollapsible({ open = false, children, title }) {
-  const [isCollapsed, setIsCollapsed] = useState(!open);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
-    <View className="w-full px-4 py-4 border-b">
+    //black border
+    <View className="w-full px-4 py-4 border-b border-[#00000020]">
       <Pressable onPress={() => setIsCollapsed((curr) => !curr)}>
         <View className="flex flex-row justify-between items-center">
           <Text className="text-2xl font-title">{title}</Text>
@@ -23,9 +24,9 @@ export default function AbbyCollapsible({ open = false, children, title }) {
         </View>
       </Pressable>
       <Collapsible
-        renderChildrenCollapsed={false}
+        // renderChildrenCollapsed={false}
         collapsed={isCollapsed}
-        align="bottom"
+        // align="bottom"
         style={{
           flex: 1,
           paddingTop: 10

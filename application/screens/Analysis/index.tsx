@@ -55,7 +55,7 @@ export default function Analysis({ route, navigation }: Props) {
         </Text>
       </View>
 
-      <AbbyCollapsible title="Click to FUCK" open={true}>
+      <AbbyCollapsible title="Click to FUCK">
         <Text>{'O || O'}</Text>
         <Text>{'    ||  '}</Text>
         <Text>{'    ||  '}</Text>
@@ -64,7 +64,7 @@ export default function Analysis({ route, navigation }: Props) {
         <Text>{'    ||  '}</Text>
         <Text>{'   V  '}</Text>
       </AbbyCollapsible>
-      <AbbyCollapsible title="Click to CUM" open={true}>
+      <AbbyCollapsible title="Click to CUM">
         <Text>{'    ^.  '}</Text>
         <Text>{'   .~\\  '}</Text>
         <Text>{'  o~~\\ '}</Text>
