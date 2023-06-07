@@ -6,12 +6,15 @@ import { PlusIcon, MinusIcon } from 'react-native-heroicons/solid';
 
 import { Pressable, View, Text } from 'react-native';
 
+//potentially change to this
+// https://stackoverflow.com/questions/67060475/react-native-animated-accordion-drawer-drop-down-collapsible-card
+
 export default function AbbyCollapsible({ open = false, children, title }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
     //black border
-    <View className="w-full px-4 py-4 border-b border-[#00000020]">
+    <View className="w-full px-4 py-4 border-b border-t border-[#00000020]">
       <Pressable onPress={() => setIsCollapsed((curr) => !curr)}>
         <View className="flex flex-row justify-between items-center">
           <Text className="text-2xl font-title">{title}</Text>

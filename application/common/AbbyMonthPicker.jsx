@@ -2,6 +2,8 @@ import { View, Text, Pressable } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import useUser from '../../hooks/useUser';
 
+import { DateTime } from 'luxon';
+
 import {
   ChevronRightIcon,
   ChevronLeftIcon
@@ -34,28 +36,32 @@ export default function AbbyDatePicker({ dateRange, setDateRange }) {
       setEntries([
         {
           title: 'All time',
-          to: new Date(),
-          from: new Date(user.createdAt)
+          to: DateTime.now(),
+          from: DateTime.fromISO(user.createdAt)
         },
         {
           title: 'Last 30 Days',
-          to: new Date(),
-          from: new Date(new Date().setDate(new Date().getDate() - 30))
+          to: DateTime.now(),
+          from: DateTime.now().minus({ days: 30 })
         }
       ]);
       //Add the last 12 months, excluding this month
       for (let i = 1; i < 12; i++) {
-        const newDate = new Date();
-        const month = newDate.getMonth() - i;
-        const year = newDate.getFullYear();
-        const monthFrom = new Date(year, month, 1);
-        const monthTo = new Date(year, month + 1, 1);
+        // const newDate = new Date();
+        // const month = newDate.getMonth() - i;
+        // const year = newDate.getFullYear();
+        // const monthFrom = new Date(year, month, 1);
+        // const monthTo = new Date(year, month + 1, 1);
+        //using luxon datetimes
+        const monthFrom = DateTime.now().minus({ months: i }).set({ day: 1 });
+        const monthTo = DateTime.now()
+          .minus({ months: i - 1 })
+          .set({ day: 1 });
+
         setEntries((entries) => [
           ...entries,
           {
-            title: `${monthFrom.toLocaleString('default', {
-              month: 'long'
-            })}`,
+            title: `${monthFrom.toFormat('MMMM')}`,
             to: monthTo,
             from: monthFrom
           }
@@ -78,29 +84,19 @@ export default function AbbyDatePicker({ dateRange, setDateRange }) {
           carouselRef.current.snapToItem(index);
         }}>
         <View className="items-center justify-center flex-row z-100">
-          {index === currIndex && (
-            <Pressable onPress={() => carouselRef.current.snapToPrev()}>
-              <ChevronLeftIcon className="w-6 h-6" />
-            </Pressable>
-          )}
           <View
-            className={`${
-              index === currIndex ? 'border-blue border-2 ' : ''
-            }  rounded-full p-2 px-4 bg-white
+            // ${index === currIndex ? 'border-blue border-2 ' : ''}
+            className={`
+            rounded-full p-2 px-4 bg-transparent
             justify-center items-center
             `}>
             <Text
-              className={`${
-                index === currIndex ? 'text-blue' : 'text-black'
-              } font-title text-xl`}>
+              // ${index === currIndex ? 'text-blue' : 'text-black'}
+              className={`
+              font-title text-xl`}>
               {item.title}
             </Text>
           </View>
-          {index === currIndex && item.title !== 'All time' && (
-            <Pressable onPress={() => carouselRef.current.snapToNext()}>
-              <ChevronRightIcon className="w-6 h-6" />
-            </Pressable>
-          )}
         </View>
       </Pressable>
     );
@@ -109,10 +105,23 @@ export default function AbbyDatePicker({ dateRange, setDateRange }) {
   const sliderWidth = 400;
   const itemWidth = 150;
 
-  if (!user || !currIndex) return <Text>Loading...</Text>;
+  if (!user) return <Text>Loading...</Text>;
 
   return (
-    <View className=" w-full items-center">
+    <View className="w-full items-center">
+      <View className="self-center w-1/2 absolute top-0 bottom-0 mx-auto my-auto bg-transparent flex flex-row items-center">
+        <Pressable
+          className={` ${currIndex === 0 && 'opacity-0'}`}
+          onPress={() => carouselRef.current.snapToPrev()}>
+          <ChevronLeftIcon className="w-6 h-6" />
+        </Pressable>
+        <View className="flex-1 h-full rounded-full border-2 border-blue bg-transparent"></View>
+        <Pressable
+          onPress={() => carouselRef.current.snapToNext()}
+          className={` ${currIndex === LAST30INDEX + 1 && 'opacity-0'}`}>
+          <ChevronRightIcon className={`w-6 h-6`} />
+        </Pressable>
+      </View>
       <Carousel
         ref={carouselRef}
         data={entries}
@@ -122,7 +131,8 @@ export default function AbbyDatePicker({ dateRange, setDateRange }) {
         style={{
           flex: 1,
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          zIndex: 10
         }}
         //Start on the second last item
         // firstItem={entries.length - 2}
