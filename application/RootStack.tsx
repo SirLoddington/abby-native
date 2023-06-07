@@ -1,4 +1,4 @@
-import MissionControl from './screens/MissionControl';
+import BottomBar from './screens/BottomBar';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../NavigationTypes';
@@ -10,8 +10,8 @@ import MedicalTeam from './screens/Profile/MedicalTeam';
 import Personal from './screens/Profile/Personal';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Header from './Headers/Header';
-import HeaderLeft from './Headers/HeaderLeft';
+import Header from './headers/Header';
+import HeaderLeft from './headers/HeaderLeft';
 import Journalling from './screens/Journal/Create';
 import JournalPage from './screens/Journal/JournalPage';
 
@@ -21,7 +21,7 @@ export default function RootStack() {
     <NavigationContainer>
       <Stack.Navigator
         id="RootStack"
-        initialRouteName="MissionControl"
+        initialRouteName="BottomBar"
         screenOptions={
           {
             // headerShown: false
@@ -34,8 +34,8 @@ export default function RootStack() {
           }
         }>
         <Stack.Screen
-          name="MissionControl"
-          component={MissionControl}
+          name="BottomBar"
+          component={BottomBar}
           options={{
             headerShown: false
             // headerTitle: (props) => (

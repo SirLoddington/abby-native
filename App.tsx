@@ -47,9 +47,9 @@ export default function App() {
 
     <QueryClientProvider client={queryClient}>
       {/* Unauthenticated Router*/}
-      <View className={' flex-1 '} onLayout={onLayoutRootView}>
+      <SafeAreaView className={' flex-1 '} onLayout={onLayoutRootView}>
         <RootStack />
-      </View>
+      </SafeAreaView>
     </QueryClientProvider>
   );
 }

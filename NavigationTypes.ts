@@ -13,7 +13,7 @@ export type BottomTabsParamList = {
 };
 
 export type RootStackParamList = {
-  MissionControl: NavigatorScreenParams<BottomTabsParamList>;
+  BottomBar: NavigatorScreenParams<BottomTabsParamList>;
   Profile: undefined;
   Personal: undefined;
   MedicalTeam: undefined;
