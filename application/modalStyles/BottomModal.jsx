@@ -2,6 +2,12 @@ import Modal from 'react-native-modal';
 
 import { Button, Text, View } from 'react-native';
 
+//
+//  The modals are currently all in different styles i.e. colourmap vs className styling
+//  Someone else have a look and pick the best one
+//  They should probs be standardised
+//
+
 export default function BottomModal({
   isOpen,
   setIsOpen,

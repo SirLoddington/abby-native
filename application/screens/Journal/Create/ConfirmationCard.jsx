@@ -1,5 +1,5 @@
 import AbbyButton from '../../../common/AbbyButton';
-import Card from '../../../modals/modalStyles/Card';
+import Card from '../../../modalStyles/CardModal';
 
 import { Text, View } from 'react-native';
 import { finishNLP } from '../../../../services';

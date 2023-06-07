@@ -1,15 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  Button,
-  FlatList,
-  Pressable
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, Pressable, Image } from 'react-native';
 import { useQuery } from 'react-query';
 
 import _ from 'lodash';
+import { DateTime } from 'luxon';
 import { getFeed } from '../../../../services';
 
 import JournalEntryMini from './JournalEntryMini';
@@ -21,34 +15,16 @@ import FeedDateHeader from './FeedDateHeader';
 import { useNavigation } from '@react-navigation/native';
 
 export default function JournalHistory() {
+  const dog = require('../../../../assets/images/walking_dog.png');
   const navigation = useNavigation();
   const [feedData, setFeedData] = useState([
     { type: 'journalHere' },
     { type: 'journalPrompt' }
   ]);
 
-  // const [feedDateHeaderIndexes, setFeedDateHeaderIndexes] = useState([]);
-  // var feedDateHeaderIndexes = useRef([4]);
-
-  // useEffect(() => {
-  //   const indexes = feedData
-  //     .map((item, index) => {
-  //       if (item.type === 'feedDateHeader') {
-  //         return index;
-  //       }
-  //     })
-  //     .filter((item) => item !== undefined);
-  //   setFeedDateHeaderIndexes(indexes);
-  // }, [feedData]);
-
   const [to, setTo] = useState(null);
   const [from, setFrom] = useState(null);
   useEffect(() => {
-    // console.log('proc!');
-    // setTo(new Date().toISOString());
-    // const twoWeeksAgo = new Date();
-    // twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
-    // setFrom(twoWeeksAgo.toISOString());
     navigation.setOptions({
       headerLeft: () => <DateHeader date={to} />
     });
@@ -60,56 +36,37 @@ export default function JournalHistory() {
 
   useEffect(() => {
     if (data) {
-      // const dateHeader = {
-      //   type: 'feedDateHeader',
-      //   from: new Date(from),
-      //   to: new Date(to)
-      // };
-      // setFeedDateHeaderIndexes((curr) => [...curr, feedData.length]);
-      // feedDateHeaderIndexes.current.push(feedData.length);
-
       const journalEntries = data?.data?.map((entry) => {
         return {
           type: 'journalEntry',
           journal: entry
         };
       });
-      // const journals = events?.filter((event) => {
-      //   return event.type === 'journalEntry';
-      // });
 
-      setFeedData((curr) => [...curr, ...journalEntries]);
+      if (journalEntries.length === 0) {
+        setFeedData((curr) => [...curr, { type: 'noJournals', to }]);
+      } else {
+        setFeedData((curr) => [...curr, ...journalEntries]);
+      }
     }
   }, [data]);
 
   //Needs to defend against if they didnt journal in this week.
   //Maybe check data then call again? but make sure if they just signed up it didnt infinitely proc
-  //Also the the first time it loads is getting skipped because onEndReached is called before the data is loaded
+  //Also the the first time it loads is getting skipped (because onEndReached is called before the data is loaded maybe?)
   function getNextWeek() {
-    console.log('getNextWeek');
-
-    // while (isLoading) {
-    //   // console.log('waiting for data...');
-    // }
-
     if (!to || !from) {
-      console.log("initialising to today's date");
       const newTo = new Date();
       setTo(newTo.toISOString());
       const twoWeeksAgo = new Date();
       twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 7);
       setFrom(twoWeeksAgo.toISOString());
-      //wait 5 seconds for the data to load
-
-      // setTimeout(() => {}, 5000);
     } else {
       const newTo = new Date(to);
       const newFrom = new Date(from);
 
       newTo.setDate(newTo.getDate() - 7);
       newFrom.setDate(newFrom.getDate() - 7);
-      console.log('newTo', newTo);
-      console.log('newFrom', newFrom);
       setTo(newTo.toISOString());
       setFrom(newFrom.toISOString());
     }
@@ -136,8 +93,24 @@ export default function JournalHistory() {
       case 'journalEntry':
         return <JournalEntryMini journal={item.journal} />;
 
+      //currently not working and not used
       case 'feedDateHeader':
         return <FeedDateHeader from={item.from} to={item.to} />;
+
+      case 'noJournals':
+        return (
+          <View
+            className="flex flex-col justify-center items-center space-y-4 border-b pb-4 pt-4" //flex-1
+            id={item.to}>
+            <Text className=" w-full text-start font-userText">
+              {DateTime.fromISO(item.to).toFormat('cccc, dd LLL')}
+            </Text>
+            <Image source={dog} style={{ width: 200, height: 200 }} />
+            <Text className="font-userText text-black opacity-40 text-xl">
+              You didn't journal this week...
+            </Text>
+          </View>
+        );
 
       default:
         return null;
@@ -152,11 +125,9 @@ export default function JournalHistory() {
         return renderItem(item);
       }}
       onEndReached={() => {
-        console.log('onEndReached');
         getNextWeek();
       }}
       decelerationRate={'fast'}
-      // stickyHeaderIndices={feedDateHeaderIndexes.current}
     />
   );
 }

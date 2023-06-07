@@ -3,6 +3,12 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import Modal from 'react-native-modal';
 
+//
+//  The modals are currently all in different styles i.e. colourmap vs className styling
+//  Someone else have a look and pick the best one
+//  They should probs be standardised
+//
+
 export default function BottomScroll({
   isOpen,
   setIsOpen,
@@ -10,6 +16,7 @@ export default function BottomScroll({
   classStyle = '',
   ...props
 }) {
+  //Way of defaulting to white
   //bg-white if there are no other bg classes
   const bgWhite = !classStyle.includes('bg');
 

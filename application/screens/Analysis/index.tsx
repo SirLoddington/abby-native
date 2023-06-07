@@ -51,17 +51,13 @@ export default function Analysis({ route, navigation }: Props) {
     <View className="bg-white flex-1 justify-center items-center">
       <View className="sticky top-0 w-full ">
         <AbbyMonthPicker dateRange={dateRange} setDateRange={setDateRange} />
-        <Text className="text-center font-title">
-          Ready to collect data between
-          {dateRange?.from?.toISO()} - {dateRange?.to?.toISO()}
-        </Text>
       </View>
       <ScrollView
         ref={scrollViewRef}
         onScroll={handleOnScroll}
         scrollEventThrottle={16}
         overScrollMode="always"
-        className="flex-1 w-full">
+        className="flex-1 w-full pt-20">
         <AbbyCollapsible title="Dashboard">
           {/* <SymptomsBox dateRange={dateRange} /> */}
           {/* <QOLBox dateRange={dateRange} /> */}
@@ -81,7 +77,7 @@ export default function Analysis({ route, navigation }: Props) {
           <Text>{' \\  |  / /'}</Text>
           <Text>{'   ယ'}</Text>
           <Text>{'  /    \\'}</Text>
-          {/* <Text>{'   ......'}</Text>
+          <Text>{'   ......'}</Text>
           <Text>{'O |  | O'}</Text>
           <Text>{'    |  |  '}</Text>
           <Text>{'    |  |  '}</Text>
@@ -93,7 +89,7 @@ export default function Analysis({ route, navigation }: Props) {
           <Text>{'   .~  '}</Text>
           <Text>{'  o~~ '}</Text>
           <Text>{' /o~~o '}</Text>
-          <Text>{'~~~~~~ '}</Text> */}
+          <Text>{'~~~~~~ '}</Text>
         </AbbyCollapsible>
       </ScrollView>
     </View>

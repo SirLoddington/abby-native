@@ -1,4 +1,4 @@
-import BottomBar from './screens/BottomBar';
+import BottomBar from './BottomBar';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../NavigationTypes';
@@ -19,42 +19,26 @@ export default function RootStack() {
   const Stack = createStackNavigator<RootStackParamList>();
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        id="RootStack"
-        initialRouteName="BottomBar"
-        screenOptions={
-          {
-            // headerShown: false
-            // headerTitle: (props) => {
-            //   console.log('props');
-            //   console.log(props);
-            //   return <Header {...props} />;
-            // }
-            // headerBackButtonMenuEnabled: true
-          }
-        }>
+      <Stack.Navigator id="RootStack" initialRouteName="BottomBar">
         <Stack.Screen
           name="BottomBar"
           component={BottomBar}
           options={{
             headerShown: false
-            // headerTitle: (props) => (
-            //   <Header {...props} title="Bission" name="nuts" />
-            // ),
-            // headerLeft: (props) => (
-            //   <HeaderLeft name="ass" date="upmyAss" {...props} />
-            // )
           }}
         />
-        {/* <Stack.Screen name="Profile" component={Profile} /> */}
+
+        {/* JOURNAL */}
+        <Stack.Screen name="Journalling" component={Journalling} />
+        <Stack.Screen name="JournalPage" component={JournalPage} />
+
+        {/* ANALYSIS */}
+
+        {/* PROFILE */}
         <Stack.Screen name="Lifestyle" component={Lifestyle} />
         <Stack.Screen name="MedicalHistory" component={MedicalHistory} />
         <Stack.Screen name="MedicalTeam" component={MedicalTeam} />
         <Stack.Screen name="Personal" component={Personal} />
-
-        <Stack.Screen name="Journalling" component={Journalling} />
-
-        <Stack.Screen name="JournalPage" component={JournalPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

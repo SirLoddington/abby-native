@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { BottomTabsParamList } from '../../NavigationTypes';
+import type { BottomTabsParamList } from '../NavigationTypes';
 
 import { View, Text, Image } from 'react-native';
 
@@ -9,27 +9,12 @@ import {
   ChartBarIcon
 } from 'react-native-heroicons/solid';
 
-import Journal from './Journal';
-import Analysis from './Analysis';
-import Profile from './Profile';
+import Journal from './screens/Journal';
+import Analysis from './screens/Analysis';
+import Profile from './screens/Profile';
 
-import Header from '../headers/Header';
-import DateHeader from '../headers/DateHeader';
-
-function LogoTitle() {
-  return (
-    //Far left of header
-    <View
-      className="absolute
-    left-0 bg-blue w-50
-    ">
-      <Image
-        style={{ width: 50, height: 50 }}
-        source={require('../../assets/transparent100x100.png')}
-      />
-    </View>
-  );
-}
+import DateHeader from './headers/DateHeader';
+import NavHeader from './headers/NavHeader';
 
 export default function BottomBar() {
   const BottomTabs = createBottomTabNavigator<BottomTabsParamList>();
@@ -99,9 +84,8 @@ export default function BottomBar() {
         component={Journal}
         options={{
           headerTitle: (props) => <></>,
-          headerLeft: (props) => (
-            <DateHeader name="ass" date="upmyAss" {...props} />
-          )
+          headerLeft: (props) => <DateHeader {...props} />,
+          headerRight: () => <NavHeader />
         }}
       />
       <BottomTabs.Screen

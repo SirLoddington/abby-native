@@ -2,6 +2,48 @@
 
 AbbyHealth native app
 
+## env
+
+i run this with the simulator app from the app store
+npm install
+npm run start
+
+## Auth
+
+I've just been getting a token from running Abby on local and getting the accessToken from session storage (Devtools->Application)
+and putting it in useSSE and services
+
+## Headers
+
+import headers from the folder
+include in the screen's entry into the RootStack
+
+options={{
+
+//either
+headerShown: false
+
+    //OR
+
+    headerTitle: (props) => <HeaderForCentre/>, // <></> will free up the space for the side headers
+    headerLeft: (props) => <HeaderForLeftSide/>,
+    headerRight: () => <></>
+
+}}
+
+## Making a new screen
+
+Put it under the appropriate Journal/Analysis/Profile folder.
+Add it to RootStack
+
+## Modals
+
+There are 3 modal styles to pick from in the modalStyle folder.
+They currently all follow a different format - they are all concepts for how they could all be done.
+They should be standardised b4 we rip in
+
+Store modals together with the component that summons them.
+
 ## Debugging
 
 brew install react-native-debugger
