@@ -1,4 +1,4 @@
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, ScrollView } from 'react-native';
 
 //Typing for Tabs
 // import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
@@ -22,127 +22,80 @@ type Props = CompositeScreenProps<
   StackScreenProps<RootStackParamList>
 >;
 
-import { AbbyLogo } from '../../common/AbbyLogo';
-import AbbyButton from '../../common/AbbyButton';
-
-import { useState } from 'react';
-import BottomModal from '../../modals/modalStyles/Bottom';
-import Card from '../../modals/modalStyles/Card';
-import BottomScrollModal from '../../modals/modalStyles/BottomScroll';
+import { useState, useRef } from 'react';
 
 import AbbyMonthPicker from '../../common/AbbyMonthPicker';
 import AbbyCollapsible from '../../common/AbbyCollapsible';
+import SymptomsBox from './Dashboard/Boxes/SymptomsBox';
+import QOLBox from './Dashboard/Boxes/QOLBox';
+import MentalHealthBox from './Dashboard/Boxes/MentalHealthBox';
 
 export default function Analysis({ route, navigation }: Props) {
-  const jid = route.params?.jid;
-
-  const [cardIsOpen, setCardIsOpen] = useState(false);
-  const [sliderIsOpen, setSliderIsOpen] = useState(false);
-  const [bottomScrollModalIsOpen, setBottomScrollModalIsOpen] = useState(false);
-
   const [dateRange, setDateRange] = useState({
     from: null,
     to: null
   });
 
+  const scrollViewRef = useRef(null);
+  const [scrollOffset, setScrollOffset] = useState(null);
+
+  const handleOnScroll = (event: any) => {
+    setScrollOffset(event.nativeEvent.contentOffset.y);
+  };
+  const handleScrollTo = (p: any) => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo(p);
+    }
+  };
   return (
     <View className="bg-white flex-1 justify-center items-center">
-      <View className="absolute top-0 w-full">
+      <View className="sticky top-0 w-full ">
         <AbbyMonthPicker dateRange={dateRange} setDateRange={setDateRange} />
         <Text className="text-center font-title">
           Ready to collect data between
-          {dateRange?.from?.toISOString()} - {dateRange?.to?.toISOString()}
+          {dateRange?.from?.toISO()} - {dateRange?.to?.toISO()}
         </Text>
       </View>
-
-      <AbbyCollapsible title="Click to FUCK">
-        <Text>{'O || O'}</Text>
-        <Text>{'    ||  '}</Text>
-        <Text>{'    ||  '}</Text>
-        <Text>{'    ||  '}</Text>
-        <Text>{'    ||  '}</Text>
-        <Text>{'    ||  '}</Text>
-        <Text>{'   V  '}</Text>
-      </AbbyCollapsible>
-      <AbbyCollapsible title="Click to CUM">
-        <Text>{'    ^.  '}</Text>
-        <Text>{'   .~\\  '}</Text>
-        <Text>{'  o~~\\ '}</Text>
-        <Text>{' /o~\\~o '}</Text>
-        <Text>{'~~~~~~ '}</Text>
-      </AbbyCollapsible>
-
-      <Card isOpen={cardIsOpen} setIsOpen={setCardIsOpen}>
-        <View className="flex-1 flex flex-col space-y-10 mt-10">
-          <Text>Card!</Text>
-          <AbbyButton
-            pressFunction={() => setCardIsOpen(false)}
-            text="Hide modal"
-            colour="white"
-            className="self-end"
-          />
-        </View>
-      </Card>
-      <BottomModal isOpen={sliderIsOpen} setIsOpen={setSliderIsOpen}>
-        <View className="flex-1 flex flex-col space-y-4">
-          <Text className="text-xl font-title text-center">Slider!</Text>
-          <AbbyButton
-            pressFunction={() => setSliderIsOpen(false)}
-            text="Hide modal"
-            colour="white"
-            className="self-end"
-          />
-        </View>
-      </BottomModal>
-      <BottomScrollModal
-        isOpen={bottomScrollModalIsOpen}
-        setIsOpen={setBottomScrollModalIsOpen}
-        classStyle="bg-blue ">
-        <View>
-          <View className="  h-[200px]">
-            <Text className="text-xl font-title text-center">Scroller!</Text>
-            <AbbyButton
-              pressFunction={() => setBottomScrollModalIsOpen(false)}
-              text="Hide modal"
-              colour="white"
-              className="self-end"
-            />
-          </View>
-          <View className=" h-[200px]">
-            <Text className="text-xl font-title text-center">im cruisin</Text>
-          </View>
-          <View className=" h-[200px]">
-            <Text className="text-xl font-title text-center">Skrrrrr</Text>
-          </View>
-        </View>
-      </BottomScrollModal>
-      <Text>This is the Journal analysis page for journal {jid}</Text>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-      <AbbyLogo />
-      <AbbyButton
-        text="Slider modal"
-        colour="white"
-        shapeStyle="box"
-        pressFunction={() => {
-          setSliderIsOpen(true);
-        }}
-      />
-      <AbbyButton
-        text="Card modal"
-        colour="white"
-        shapeStyle="box"
-        pressFunction={() => {
-          setCardIsOpen(true);
-        }}
-      />
-      <AbbyButton
-        text="Bottom scroll modal"
-        colour="white"
-        shapeStyle="box"
-        pressFunction={() => {
-          setBottomScrollModalIsOpen(true);
-        }}
-      />
+      <ScrollView
+        ref={scrollViewRef}
+        onScroll={handleOnScroll}
+        scrollEventThrottle={16}
+        overScrollMode="always"
+        className="flex-1 w-full">
+        <AbbyCollapsible title="Dashboard">
+          {/* <SymptomsBox dateRange={dateRange} /> */}
+          {/* <QOLBox dateRange={dateRange} /> */}
+          <MentalHealthBox dateRange={dateRange} />
+        </AbbyCollapsible>
+        <AbbyCollapsible title="Next steps">{}</AbbyCollapsible>
+        <AbbyCollapsible title="The Gallery">
+          <Text>{'                     .'}</Text>
+          <Text>{'                  ╭╮'}</Text>
+          <Text>{'                    / /'}</Text>
+          <Text>{'                  / /'}</Text>
+          <Text>{'                / /'}</Text>
+          <Text>{'              / /'}</Text>
+          <Text>{'            / /'}</Text>
+          <Text>{'          / /'}</Text>
+          <Text>{'  ☺ / /'}</Text>
+          <Text>{' \\  |  / /'}</Text>
+          <Text>{'   ယ'}</Text>
+          <Text>{'  /    \\'}</Text>
+          {/* <Text>{'   ......'}</Text>
+          <Text>{'O |  | O'}</Text>
+          <Text>{'    |  |  '}</Text>
+          <Text>{'    |  |  '}</Text>
+          <Text>{'    |  |  '}</Text>
+          <Text>{'    |  |  '}</Text>
+          <Text>{'    |_|  '}</Text>
+          <Text>{'    ,/  '}</Text>
+          <Text>{'    ^.  '}</Text>
+          <Text>{'   .~  '}</Text>
+          <Text>{'  o~~ '}</Text>
+          <Text>{' /o~~o '}</Text>
+          <Text>{'~~~~~~ '}</Text> */}
+        </AbbyCollapsible>
+      </ScrollView>
     </View>
   );
 }

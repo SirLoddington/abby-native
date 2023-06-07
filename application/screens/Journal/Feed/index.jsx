@@ -14,7 +14,7 @@ import { getFeed } from '../../../../services';
 
 import JournalEntryMini from './JournalEntryMini';
 import JournalPrompt from './JournalPrompt';
-import DateHeader from '../../../Headers/DateHeader';
+import DateHeader from '../../../headers/DateHeader';
 
 import FeedDateHeader from './FeedDateHeader';
 

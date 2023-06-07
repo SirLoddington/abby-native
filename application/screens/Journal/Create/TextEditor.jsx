@@ -1,9 +1,9 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 
 export default function TextEditor({ text, onChangeText }) {
   return (
-    <SafeAreaView>
+    <View>
       <TextInput
         onChangeText={onChangeText}
         value={text}
@@ -14,7 +14,7 @@ export default function TextEditor({ text, onChangeText }) {
           text-2xl
         "
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
