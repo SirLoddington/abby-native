@@ -93,7 +93,11 @@ export default function BottomBar() {
         component={Analysis}
         options={{ headerShown: false }}
       />
-      <BottomTabs.Screen name="Profile" component={Profile} />
+      <BottomTabs.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </BottomTabs.Navigator>
   );
 }

@@ -13,29 +13,35 @@ type Props = CompositeScreenProps<
   StackScreenProps<RootStackParamList>
 >;
 
+import useUser from '../../../hooks/useUser';
+
+import JournalStats from './JournalStats';
+import MedicalTeam from './MedicalTeam';
+import Appointments from './Appointments';
+import Dropdowns from './Dropdowns';
 //
 export default function Profile({ route, navigation }: Props) {
-  return (
-    <View className="flex-1 items-center justify-center">
-      <Text>This is the profile page</Text>
-      <Button onPress={() => navigation.goBack()} title="Go back" />
+  const user = useUser();
+  console.log('user');
+  console.log(user);
 
-      <Button
-        onPress={() => navigation.navigate('MedicalTeam')}
-        title="Medical Team"
-      />
-      <Button
-        onPress={() => navigation.navigate('MedicalHistory')}
-        title="Medical History"
-      />
-      <Button
-        onPress={() => navigation.navigate('Personal')}
-        title="Personal"
-      />
-      <Button
-        onPress={() => navigation.navigate('Lifestyle')}
-        title="Lifestyle"
-      />
+  return (
+    <View className="flex-1 flex flex-col space-y-8 items-start p-4 bg-white text-start w-full">
+      <Text className="font-title text-4xl">{user?.name}</Text>
+
+      {/* Wrapped in views to get the spacing */}
+      <View className="w-full">
+        <JournalStats />
+      </View>
+      <View>
+        <MedicalTeam />
+      </View>
+      <View>
+        <Appointments />
+      </View>
+      <View>
+        <Dropdowns />
+      </View>
     </View>
   );
 }
